@@ -1,0 +1,14 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightgray;
+}
+
+header nav>*:not(:last-child) {
+    margin-inline-end: 10px;
+}
+a{
+    text-decoration: none;
+    color: #212121;
+}
