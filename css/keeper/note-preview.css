@@ -3,13 +3,13 @@
 }
 
 
-.notes-list {
+.notes-app .notes-list {
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
 }
 
-.note {
+.notes-app .note {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,19 +20,19 @@
     border-radius: 15px;
 }
 
-.note-img {
+.notes-app .note-img {
     height: 200px;
     padding: 5px; 
 }
 
-.note-title{
+.notes-app .note-title{
     font-weight: 600;
 }
-.form-container{
+.notes-app .form-container{
     display: flex;
     justify-content: center;
 }
-.form-submit {
+.notes-app .form-submit {
     display: flex;
     width: fit-content;
     justify-content: center;
@@ -42,32 +42,38 @@
     border-radius: 25px;
 
 }
-/* button{
+.notes-app button{
   background-color: #ffffff; 
   border: none;
   padding: 0;
-} */
-.fa-solid, .fa-brands, .input-submit{
+}
+.notes-app .fa-solid, .fa-brands, .input-submit{
     display: flex;
     justify-content: center;
-    align-items: center;
-    color: rgb(161, 158, 158);
-    height: 37px;
-    width: 37px;
+    
+    color: rgb(137, 135, 135);
+    margin: 5px;
+    /* height: 37px;
+    width: 37px; */
 }
 
-.fa-solid .fa-brands {
+.notes-app .fa-solid .fa-brands {
     display: flex;
     align-items: center;
 }
 
-.actions-container {
+.notes-app .actions-container {
     display: flex;
     align-items: center;
 }
-.input-submit {
-    width: 400px;
-    height: 36px;
+
+.notes-app .input-submit {
+
+    flex-direction: column;
+}
+.notes-app .input-submit-txt, .input-submit-title {
+    /* width: 400px;
+    height: 36px; */
     border: 1px solid rgb(187, 181, 181);
     padding: 20px;
     border: none;
@@ -75,14 +81,13 @@
     border-radius: 10px 0 0 10px ;
 }
 
-
-.last-action-btn {
+.notes-app .last-action-btn {
     border-radius: 0 10px 10px 0;
 }
-.input-submit::placeholder {
+.notes-app .input-submit::placeholder {
     color: rgb(87, 86, 86);
 }
 
-.form-submit-btn {
+.notes-app .form-submit-btn {
     display: none;
 }
