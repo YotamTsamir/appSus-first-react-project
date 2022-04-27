@@ -5,6 +5,8 @@ const STORAGE_KEY = "notesDB"
 
 export const notesService = {
     query,
+    addNote,
+    deleteNote,
 }
 
 const gNotes = storageService.loadFromStorage() || [
@@ -65,6 +67,22 @@ function query() {
         storageService.saveToStorage(STORAGE_KEY, gNotes)
     } 
     return Promise.resolve(notes)
+}
+
+function addNote(note) {
+    let notes = storageService.loadFromStorage(STORAGE_KEY)
+    if(!notes || !notes.length) notes = []
+    notes = [note,...notes]
+    storageService.saveToStorage(STORAGE_KEY,notes)
+    return Promise.resolve()
+}
+
+function deleteNote(noteId){
+    let notes = storageService.loadFromStorage(STORAGE_KEY)
+    notes = notes.filter(note => note.id !== noteId)
+    console.log(notes)
+    storageService.saveToStorage(STORAGE_KEY,notes)
+    return Promise.resolve()
 }
 
 function _createNotes() {

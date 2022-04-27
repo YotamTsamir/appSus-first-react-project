@@ -1,5 +1,6 @@
 import {notesService} from '../services/note.service.js'
 import { NoteList } from '../cmps/note-list.jsx'
+import { NotesDetails } from './note-details.jsx'
 export class NotesApp extends React.Component{
 
     state = {
@@ -17,12 +18,21 @@ export class NotesApp extends React.Component{
         })
     }
 
+    onAddNote = () => {
+        this.loadNotes()   
+    }
 
+    onDeleteNote = () => {
+        this.loadNotes();
+    }
+
+  
 
     render(){
         const notes = this.state.notes
         return <div key="note">
-            <NoteList notes={notes}/>
+            <NotesDetails onAddNote={this.onAddNote}/>
+            <NoteList notes={notes} onDeleteNote={this.onDeleteNote}/>
         </div>
     }
 }
