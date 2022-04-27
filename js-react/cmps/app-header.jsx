@@ -1,7 +1,7 @@
 
 const {NavLink,withRouter} = ReactRouterDOM
 
-function _appHeader(props){
+function _AppHeader(props){
     return <header>
         <h3>The gazibos</h3>
         <nav>
@@ -12,4 +12,4 @@ function _appHeader(props){
     </header>
 }
 
-export const AppHeader = withRouter(_appHeader)
+export const AppHeader = withRouter(_AppHeader)

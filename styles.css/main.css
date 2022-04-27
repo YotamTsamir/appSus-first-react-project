@@ -1,2 +1,4 @@
 @import './cmps/app-header.css';
 @import './base.css';
+@import './cmps/email-nav.css';
+@import './cmps/email-section.css';
