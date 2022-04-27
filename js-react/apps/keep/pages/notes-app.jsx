@@ -30,7 +30,7 @@ export class NotesApp extends React.Component{
 
     render(){
         const notes = this.state.notes
-        return <div key="note">
+        return <div key="note" className="notes-app">
             <NotesDetails onAddNote={this.onAddNote}/>
             <NoteList notes={notes} onDeleteNote={this.onDeleteNote}/>
         </div>

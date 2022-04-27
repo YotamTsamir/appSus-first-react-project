@@ -46,18 +46,19 @@ export class NotesDetails extends React.Component{
         
         return <div className="form-container">
             <form className="form-submit" onSubmit={this.onSubmit}>
-                {/* <div className="input-submit"> */}
-                <input className="input-submit" type="text" placeholder="Title..." onInput={this.onHandleChangeTitle} name="title" defaultValue={title}/>
-                <input className="input-submit" type="text" placeholder="Take a note..." onInput={this.onHandleChangeTxt} name="txt" defaultValue={txt}/>
-                {/* </div> */}
-                        {/* className="input-submit-txt"className="input-submit-title" */}
+                <div className="input-submit">
+                <input className="input-submit-title" type="text" placeholder="Title..." onInput={this.onHandleChangeTitle} name="title" defaultValue={title}/>
+                <input className="input-submit-txt" type="text" placeholder="Take a note..." onInput={this.onHandleChangeTxt} name="txt" defaultValue={txt}/>
+                
+                        
                 <section className="actions-container">
-                    <button  onClick={this.onSetNoteType} type="button"><i id="note-txt" className="fa-solid fa-a"></i></button>
+                    <button onClick={this.onSetNoteType} type="button"><i id="note-txt" className="fa-solid fa-a"></i></button>
                     <button onClick={this.onSetNoteType} type="button"><i  id="note-img" className="fa-solid fa-image"></i></button>
                     <button onClick={this.onSetNoteType} type="button"><i id="note-video" className="fa-brands fa-youtube"></i></button>
                     <button onClick={this.onSetNoteType}  className="last-action-btn" type="button"><i id="note-todos" className="fa-solid fa-list-ul"></i></button>
                 </section>
                 <input className="form-submit-btn" type="submit" value="submit" />
+                </div>
         </form> 
         </div>
     }
