@@ -1,11 +1,4 @@
 @import './cmps/app-header.css';
-@import './parts/base.css';
-
-
-/* Email */
+@import './base.css';
 @import './cmps/email-nav.css';
 @import './cmps/email-section.css';
-
-
-/* Keeper */
-@import './keeper/note-preview.css';

@@ -1,0 +1,7 @@
+.email-nav{
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(243, 243, 243); */
+    width: 6rem;
+    text-align: center;
+}
