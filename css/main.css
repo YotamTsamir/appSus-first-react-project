@@ -5,10 +5,12 @@
 
 
 
-/* Email */
-@import './cmps/email-nav.css';
-@import './cmps/email-section.css';
+
 
 
 /* Keeper */
 @import './keeper/note-preview.css';
+
+/* Email */
+@import './cmps/email-nav.css';
+@import './cmps/email-section.css';
