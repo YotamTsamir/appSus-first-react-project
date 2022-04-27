@@ -2,19 +2,28 @@
     display: flex;
     margin-top: 40px;
 }
+
 .email{
     margin-left: 15px;
     border: 1px lightgray solid;
     border-bottom: none;
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
 }
+
+.mail-info{
+    width: 100%;
+}
+
 .email:last-child{
     border-bottom: 1px lightgray solid;
 }
+
 .bold{
     font-weight: bold;
 }
+
 .mail-details{
     display: flex;
     width: 90%;
@@ -22,22 +31,67 @@
     flex-direction: column;
     transform: translateY(-40px);
     margin-left: 15px;
-    /* align-items: center; */
 }
+
 .email-body{
    margin-left: 15px;
 }
+
 .new-mail{
     width: 80%;
     display: flex;
     flex-direction: column;
 }
+
 .send-btn{
     width: 20%;
 }
+
 .preview{
     display: flex;
     flex-direction: column;
     width: 80%;
     height: 100%;
+}
+
+.true{
+    transition: 0.3s;
+    color: orange;
+}
+
+.star{
+    margin: 5px;
+}
+
+.email:hover .star{
+    display: block;
+}
+
+.email:hover .hidden{
+    visibility: visible;
+    pointer-events: all;
+}
+
+.grey{
+    background-color: rgba(242,245,245,0.8);
+}
+
+.add-mail{
+    object-fit: contain;
+}
+
+.add-mail-btn{
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 253, 253);
+    border-radius: 10px;
+    border: solid 1px rgb(224, 223, 223);
+}
+.add-mail-btn:hover{
+    transition: 0.3s;
+    background-color: rgb(243, 238, 238);
+    box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.37);
+}
+.email:hover{
+    box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.15);
 }

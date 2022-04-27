@@ -1,0 +1,44 @@
+.emails-section{
+    display: flex;
+    margin-top: 40px;
+}
+.email{
+    margin-left: 15px;
+    border: 1px lightgray solid;
+    border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+}
+.email:last-child{
+    border-bottom: 1px lightgray solid;
+}
+.bold{
+    font-weight: bold;
+}
+.mail-details{
+    display: flex;
+    width: 90%;
+    border: 1px lightgray solid;
+    flex-direction: column;
+    transform: translateY(-40px);
+    margin-left: 15px;
+    /* align-items: center; */
+}
+.email-body{
+   margin-left: 15px;
+}
+.new-mail{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.send-btn{
+    width: 20%;
+}
+
+.preview{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+}

@@ -1,0 +1,16 @@
+.flex{
+    display: flex;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+.space-between{
+    justify-content: space-between;
+}
+.hidden{
+    visibility: hidden;
+    pointer-events: none;
+    padding: 5px;
+
+}
