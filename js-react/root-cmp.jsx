@@ -1,6 +1,6 @@
 import { AppHeader } from "./cmps/app-header.jsx"
 import { MailApp } from "./pages/app-mail.jsx"
-import { NotesApp } from "./pages/app-notes.jsx"
+import { NotesApp } from "../js-react/apps/keep/pages/notes-app.jsx"
 import { BookApp } from "./pages/app-books.jsx"
 
 const Router = ReactRouterDOM.HashRouter
