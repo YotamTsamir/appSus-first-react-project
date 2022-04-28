@@ -2,15 +2,25 @@ import { LongText } from "./long-text.jsx";
 
 
 export function EmailPreview({ email, onClickMail, onCheckStar, onDeleteEmail, onOpenMail }) {
-    window.addEventListener('resize', () => {
-        console.log(window.innerWidth)
-    })
+    let titleLength = 50
+    let bodyLength = 130
+    // window.addEventListener('resize', () => {
+    //     console.log(window.innerWidth)
+    //     switch (window.innerWidth) {
+    //         case 1600:
+    //             titleLength=30
+    //             bodyLength=100
+    //             break;
+        
+    //         default:
+    //             break;
+    //     }
+    // })
     let isRead = 'bold';
     let bcg = '';
     let envFav = <i onClick={(ev) => { onOpenMail(email), ev.stopPropagation() }} className="fa-solid fa-envelope hidden"></i>
     let regular;
-    let titleLength = 50
-    let bodyLength = 130
+ 
     if (!email.isChecked) regular = '-regular'
     else regular = ''
     if (email.isRead) {
@@ -41,12 +51,13 @@ export function EmailPreview({ email, onClickMail, onCheckStar, onDeleteEmail, o
                     <i onClick={(ev) => { onDeleteEmail(email.id), ev.stopPropagation() }} className="fa-solid fa-trash hidden"></i>
                 </div>
             </div>
-            <div>
-                <p className="phone-date">{date}</p>
-            </div>
+          
             {/* <i onClick={() => { onOpenMail() }} className="fa-solid fa-envelope hidden"></i> */}
 
         </div>
+           <div>
+                <p className="phone-date">{date}</p>
+            </div>
     </div>
 }
 

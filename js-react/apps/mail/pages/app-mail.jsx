@@ -78,7 +78,7 @@ export class MailApp extends React.Component {
 
                 </nav>
                 <div className="preview">
-                    {!isNewEmail && !isOpenMail && <EmailList onOpenMail={this.onOpenMail} onDeleteEmail={this.onDeleteEmail} onCheckStar={this.onCheckStar} onClickMail={this.onClickMail} emails={emails} />}
+                    { !isOpenMail && <EmailList onOpenMail={this.onOpenMail} onDeleteEmail={this.onDeleteEmail} onCheckStar={this.onCheckStar} onClickMail={this.onClickMail} emails={emails} />}
                     {isNewEmail && <NewMail onSentMail={this.onSentMail} />}
                     {isOpenMail && <EmailDetails email={this.state.currOpenMail} />}
                 </div>
