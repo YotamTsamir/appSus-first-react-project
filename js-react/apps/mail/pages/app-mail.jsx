@@ -13,13 +13,15 @@ export class MailApp extends React.Component {
         isNewEmail: false,
         isOpenMail: false,
         isTrash:false,
-        currOpenMail: {}
+        currOpenMail: {},
+        
     }
 
 
 
     componentDidMount() {
         this.getEmails()
+     
     }
 
     getEmails = () => {
@@ -30,13 +32,13 @@ export class MailApp extends React.Component {
     }
 
     changeStateCritiria = (value) => {
-        this.setState({ isNewEmail: false, isOpenMail: false, critiria: value }, () => { this.getEmails() })
-        this.getEmails()
+        this.setState({ isNewEmail: false, isOpenMail: false, critiria: value },this.getEmails)
+        
     }
 
     onNewEmail = () => {
-        this.setState({ isNewEmail: true, isOpenMail: false , isTrash:false})
-        this.getEmails()
+        this.setState({ isNewEmail: true, isOpenMail: false , isTrash:false},this.getEmails)
+    
     }
 
     onSentMail = () => {

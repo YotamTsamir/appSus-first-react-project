@@ -1,10 +1,12 @@
 .email-nav{
     display: flex;
     flex-direction: column;
-    width: 8rem;
-    margin-left: 15px;
+    width: 14rem;
+    margin-left: 30px;
     margin-right: 30px;
     align-items: center;
+    transform: translateY(-3px);
+
 }
 .fa-nav{
     margin-right: 5px;
@@ -20,10 +22,12 @@
 
 .header-nav{
     width: 100%;
-    justify-content: space-between;
+    height: 2rem;
     align-items: center;
     cursor: pointer;
     padding:0 8px;
+    gap:2rem
+
 }
 .header-nav:hover{
     background-color: rgb(233, 231, 231);

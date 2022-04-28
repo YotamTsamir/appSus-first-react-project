@@ -28,9 +28,9 @@ export class EmailDetails extends React.Component {
      
         return <section className={`emails-section`}>
             <div className="mail-details">
-            <p><span className="bold">{email.sentFrom}:</span> {email.from}</p>
-            <h1>{email.subject}</h1>
-            <p className="email-body">{email.body}</p>
+            <p className="email-details"><span className="bold">{email.sentFrom}:</span> {email.from}</p>
+            <h1 className="email-details">{email.subject}</h1>
+            <p className="email-body email-details">{email.body}</p>
             </div>
         </section>
     }

@@ -3,6 +3,7 @@ export class LongText extends React.Component {
         isLongTxtShow:false,
         text: this.props.text,
         shortenBy:this.props.short,
+        isBold:this.props.isBold,
         btnTxt:'...'
     }
 
@@ -13,7 +14,7 @@ export class LongText extends React.Component {
 
 
     setText = () => {
-        if(this.state.text.length>=this.state.shortenBy) this.setState({text:this.props.text.substring(0,this.state.shortenBy-5)})
+        if(this.state.text.length>=this.state.shortenBy) this.setState({text:this.props.text.substring(0,this.state.shortenBy-10)})
         else this.setState({btnTxt:''})
     }
 
@@ -31,7 +32,7 @@ export class LongText extends React.Component {
 
     render() {
         return  <section className="longTxt">
-        <p>{this.state.text}<span>{this.state.btnTxt}</span></p>
+        <p className={this.props.isBold}>{this.state.text}<span>{this.state.btnTxt}</span></p>
         </section> 
     }
 }
