@@ -42,7 +42,7 @@ const gNotes = storageService.loadFromStorage() || [
     //  id: utilService.makeId(),
     //  type: "note-video",
     //  info: {
-    //  url: "https://www.youtube.com/embed/7-9wXQpzESo",
+    //  url: "https://www.youtube.com/watch?v=MBOa-2b4uQQ",
     //  title: "Yotams study song"
     //  },
     
@@ -72,8 +72,10 @@ function query() {
 function addNote(note) {
     let notes = storageService.loadFromStorage(STORAGE_KEY)
     if(!notes || !notes.length) notes = []
+    const idx = notes.findIndex((savedNote) => savedNote.id === note.id)
+    if(idx !== -1) return Promise.resolve()
     notes = [note,...notes]
-    storageService.saveToStorage(STORAGE_KEY,notes)
+    storageService.saveToStorage(STORAGE_KEY, notes)
     return Promise.resolve()
 }
 

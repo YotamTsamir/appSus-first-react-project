@@ -1,6 +1,7 @@
 import {notesService} from '../services/note.service.js'
 import { NoteList } from '../cmps/note-list.jsx'
 import { NotesDetails } from './note-details.jsx'
+
 export class NotesApp extends React.Component{
 
     state = {
@@ -30,6 +31,7 @@ export class NotesApp extends React.Component{
 
     render(){
         const notes = this.state.notes
+
         return <div key="note" className="notes-app">
             <NotesDetails onAddNote={this.onAddNote}/>
             <NoteList notes={notes} onDeleteNote={this.onDeleteNote}/>
