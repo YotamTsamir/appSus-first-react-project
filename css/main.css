@@ -5,11 +5,13 @@
 
 
 
-
-
-
 /* Keeper */
-@import './keeper/note-preview.css';
+@import './keeper/cmps/note-preview.css';
+@import './keeper/cmps/note-list.css';
+
+
+
+
 
 /* Email */
 @import './cmps/email-nav.css';

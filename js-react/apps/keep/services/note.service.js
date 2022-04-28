@@ -7,9 +7,19 @@ export const notesService = {
     query,
     addNote,
     deleteNote,
+    loadImageFromInput,
 }
 
 const gNotes = storageService.loadFromStorage() || [
+    
+    {
+        id: utilService.makeId(),
+        type: "note-video",
+        info: {
+        url: "https://www.youtube.com/embed/nJfrThH92WU",
+        title: "Learn this $h!t too!"
+        },
+       },
     {
      id: utilService.makeId(),
      type: "note-txt",
@@ -19,12 +29,29 @@ const gNotes = storageService.loadFromStorage() || [
      }
     },
     {
+        id: utilService.makeId(),
+        type: "note-todos",
+        info: {
+        label: "What to know about JS",
+        todos: [
+        { txt: "You can add properties to almost everything", doneAt: null },
+        { txt: "Functions are objects", doneAt: 187111111 },
+        { txt: "For... in loops iterate over property names, not values", doneAt: 187111111 },
+        { txt: "Variable scoping", doneAt: 187111111 },
+        { txt: "Variables that aren’t explicitly declared can be global", doneAt: 187111111 },
+        { txt: "JavaScript never \"sleep()s\"", doneAt: 187111111 },
+        { txt: "Automatic type conversions", doneAt: 187111111 },
+        { txt: "JavaScript is not just for browsers", doneAt: 187111111 },
+        ]
+        }
+       },
+    {
      id: utilService.makeId(),
      type: "note-img",
      info: {
-     url: "https://www.aaha.org/contentassets/150b34dfaf984d19a277b4ab52a5461d/image17jpn.png",
+     url: "https://images-na.ssl-images-amazon.com/images/I/51IWL7y8ecL._SX397_BO1,204,203,200_.jpg",
      
-     title: "Bobi and Me"
+     title: "Read this!"
      },
      style: {
      backgroundColor: "#00d"
@@ -35,18 +62,10 @@ const gNotes = storageService.loadFromStorage() || [
      type: "note-video",
      info: {
      url: "https://www.youtube.com/embed/hQAHSlTtcmY",
-     title: "Learn this SH!T"
+     title: "Learn this $h!t!"
      },
     },
-    // {
-    //  id: utilService.makeId(),
-    //  type: "note-video",
-    //  info: {
-    //  url: "https://www.youtube.com/watch?v=MBOa-2b4uQQ",
-    //  title: "Yotams study song"
-    //  },
-    
-    // },
+
     {
      id: utilService.makeId(),
      type: "note-todos",
@@ -92,4 +111,20 @@ function _createNotes() {
     if(!notes || !notes.length){
         storageService.saveToStorage(STORAGE_KEY, gNotes)
     }
+}
+
+function loadImageFromInput(ev, onImageReady){
+    // document.querySelector('.share-container').innerHTML = ''
+    return new Promise((resolve) => {
+        var reader = new FileReader()
+    
+        reader.onload = (event) => {
+            var img = new Image()
+            img.src = event.target.result
+            resolve(img.src)
+            // img.onload = onImageReady.bind(null, img)
+        }
+        reader.readAsDataURL(ev.target.files[0])
+    })
+
 }
