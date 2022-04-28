@@ -2,7 +2,8 @@ import { AppHeader } from "./cmps/app-header.jsx"
 
 import { NotesApp } from "../js-react/apps/keep/pages/notes-app.jsx"
 import { MailApp } from "./apps/mail/pages/app-mail.jsx"
-import { BookApp } from "./pages/app-books.jsx"
+import { Books } from "./apps/book/pages/books.jsx"
+import { BookDetails } from "./apps/book/cmps/book-details.jsx"
 import { EmailDetails} from "./apps/mail/cmps/email-details.jsx"
 import { NewMail } from "./apps/mail/cmps/new-mail.jsx"
 
@@ -16,10 +17,10 @@ export function App() {
     <AppHeader/>
         <main>
         <Switch>
-        <Route path='/mail/:mailId' component={EmailDetails}/>
+        <Route path='/home/:bookId' component={BookDetails}/>
         <Route path='/mail' component={MailApp}/>
         <Route path='/notes' component={NotesApp}/>
-        <Route path='/books' component={BookApp}/>
+        <Route path='/books' component={Books}/>
         </Switch>
         </main>
     </section>

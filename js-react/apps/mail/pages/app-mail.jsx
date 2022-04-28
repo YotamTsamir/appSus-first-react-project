@@ -12,6 +12,7 @@ export class MailApp extends React.Component {
         critiria: 'inbox',
         isNewEmail: false,
         isOpenMail: false,
+        isTrash:false,
         currOpenMail: {}
     }
 
@@ -34,12 +35,12 @@ export class MailApp extends React.Component {
     }
 
     onNewEmail = () => {
-        this.setState({ isNewEmail: true, isOpenMail: false })
+        this.setState({ isNewEmail: true, isOpenMail: false , isTrash:false})
         this.getEmails()
     }
 
     onSentMail = () => {
-        this.setState({ isNewEmail: false, isOpenMail: false })
+        this.setState({ isNewEmail: false, isOpenMail: false , isTrash:false})
     }
 
     onDeleteEmail = (emailId) => {
@@ -54,6 +55,13 @@ export class MailApp extends React.Component {
         this.getEmails()
     }
 
+    onOpenMail = (email) => {
+        if(email.isRead) email.isRead = false
+        else email.isRead = true
+        this.getEmails()
+        // this.setState({ isOpenMail: true })
+    }
+
     onClickMail = (email) => {
         email.isRead = true
         this.setState({ isOpenMail: true, currOpenMail: email })
@@ -64,11 +72,11 @@ export class MailApp extends React.Component {
         return <section>
             <div className="emails-section">
                 <nav className="email-nav">
-                    <EmailNav onNewEmail={this.onNewEmail} changeStateCritiria={this.changeStateCritiria} />
+                    <EmailNav critiria={this.state.critiria} onNewEmail={this.onNewEmail} changeStateCritiria={this.changeStateCritiria} />
 
                 </nav>
                 <div className="preview">
-                    {!isNewEmail && !isOpenMail && <EmailList onDeleteEmail={this.onDeleteEmail} onCheckStar={this.onCheckStar} onClickMail={this.onClickMail} emails={emails} />}
+                    {!isNewEmail && !isOpenMail && <EmailList onOpenMail={this.onOpenMail} onDeleteEmail={this.onDeleteEmail} onCheckStar={this.onCheckStar} onClickMail={this.onClickMail} emails={emails} />}
                     {isNewEmail && <NewMail onSentMail={this.onSentMail} />}
                     {isOpenMail && <EmailDetails email={this.state.currOpenMail} />}
                 </div>

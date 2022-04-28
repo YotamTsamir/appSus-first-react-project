@@ -1,0 +1,11 @@
+.user-msg{
+    position: absolute;
+    top: 100px;
+    right: 50px;
+}
+.success{
+    background-color: lightgreen;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+}

@@ -1,0 +1,12 @@
+.book-preview{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    border: 1px black solid;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.457);
+}
+
+.books-image{
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}   

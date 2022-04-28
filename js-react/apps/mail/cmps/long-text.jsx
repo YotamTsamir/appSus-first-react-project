@@ -2,6 +2,7 @@ export class LongText extends React.Component {
     state = {
         isLongTxtShow:false,
         text: this.props.text,
+        shortenBy:this.props.short,
         btnTxt:'...'
     }
 
@@ -12,7 +13,7 @@ export class LongText extends React.Component {
 
 
     setText = () => {
-        if(this.state.text.length>=60) this.setState({text:this.props.text.substring(0,50)})
+        if(this.state.text.length>=this.state.shortenBy) this.setState({text:this.props.text.substring(0,this.state.shortenBy-5)})
         else this.setState({btnTxt:''})
     }
 

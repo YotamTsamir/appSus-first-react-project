@@ -1,0 +1,24 @@
+.new-mail-section{
+    width: 100%;
+    margin-left: 10px;
+}
+
+.new-mail{
+    width: 100%;
+}
+
+.new-mail-input{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(190, 190, 190);
+    margin: 0;
+    padding: 5px;
+}
+.new-mail-msg{
+    height: 40px;
+    background-color: #313131;
+    color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}

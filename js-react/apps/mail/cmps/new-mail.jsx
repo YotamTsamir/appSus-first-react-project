@@ -51,12 +51,14 @@ export class NewMail extends React.Component {
 
     render() {
         const { to, subject, body } = this.state
-        return <section>
+        return <section className="new-mail-section">
+            <div className="new-mail-msg">
+                <p>new messege</p>
+            </div>
             <form className="new-mail" onSubmit={this.onSendEmail}>
-                <input value={to} type="text" name="to" placeholder="to" onChange={this.handleChange} />
-                <input type="text" name="cc" placeholder="cc" />
-                <input value={subject} type="text" name="subject" placeholder="title" onChange={this.handleChange} />
-                <textarea value={body} name="body" id="" cols="30" rows="10" placeholder="enter messege here" onChange={this.handleChange}></textarea>
+                <input className="new-mail-input" autoComplete='off' value={to} type="email" name="to" placeholder="to" onChange={this.handleChange} />
+                <input className="new-mail-input" autoComplete='off' value={subject} type="text" name="subject" placeholder="title" onChange={this.handleChange} />
+                <textarea className="new-mail-input" autoComplete='off' value={body} name="body" id="" cols="30" rows="10" placeholder="enter messege here" onChange={this.handleChange}></textarea>
                 <button className="send-btn">send!</button>
             </form>
 
