@@ -25,8 +25,15 @@
     border-bottom: 1px solid rgb(190, 190, 190);
     margin: 0;
     padding: 5px;
+    padding-left:15px;
 }
+
+.new-msg{
+    margin-left: 15px;
+}
+
 .new-mail-msg{
+   
     height: 40px;
     background-color: #313131;
     color: white;

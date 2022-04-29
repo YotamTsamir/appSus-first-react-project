@@ -13,6 +13,7 @@ export class NewMail extends React.Component {
 
 
     componentDidMount() {
+        console.log(this.props.isDraft)
         const { to, subject, body } = this.state
         MailService.addSentMail(to, subject, body)
         let interval = setInterval(() => this.onDraft(), 3000)
@@ -22,7 +23,6 @@ export class NewMail extends React.Component {
     onDraft = () => {
         const { to, subject, body } = this.state
         MailService.editDraftEmail(to, subject, body)
-        
     }
 
     componentWillUnmount() {
@@ -41,10 +41,7 @@ export class NewMail extends React.Component {
 
     onSendEmail = (ev) => {
         ev.preventDefault()
-        const { to, subject, body } = this.state
-        // MailService.addSentMail(to,subject,body)
-        MailService.addSentMail(to, subject, body)
-
+        MailService.sendLastMail()
         this.props.onSentMail()
         console.log('mail sent!')
     }
@@ -53,7 +50,7 @@ export class NewMail extends React.Component {
         const { to, subject, body } = this.state
         return <section className="new-mail-section">
             <div className="new-mail-msg">
-                <p>new messege</p>
+                <p className="new-msg">new messege</p>
             </div>
             <form className="new-mail" onSubmit={this.onSendEmail}>
                 <input className="new-mail-input" autoComplete='off' value={to} type="email" name="to" placeholder="to" onChange={this.handleChange} />
@@ -61,6 +58,7 @@ export class NewMail extends React.Component {
                 <textarea className="new-mail-input" autoComplete='off' value={body} name="body" id="" cols="30" rows="10" placeholder="enter messege here" onChange={this.handleChange}></textarea>
                 <button className="send-btn">send!</button>
             </form>
+                <button className="send-btn">Save as note!</button>
 
         </section>
     }

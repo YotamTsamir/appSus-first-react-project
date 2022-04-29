@@ -42,25 +42,25 @@ export class EmailNav extends React.Component {
                     <p className="nav-head">Inbox</p>
                 </div>
             </div>
-            <div className={`header-nav flex ${this.props.critiria === 'sent' ? 'highlight' : ''}`} onClick={() => this.props.changeStateCritiria('sent')}>
+            <div className={`header-nav flex ${this.props.critiria === 'sent' ? 'highlight-less' : ''}`} onClick={() => this.props.changeStateCritiria('sent')}>
                 <i className="fa-solid fa-envelope-circle-check fa-nav"></i>
                 <div className="nav-txt">
                     <p className="nav-head" >Sent</p>
                 </div>
             </div>
-            <div className={`header-nav flex  ${this.props.critiria === 'starred' ? 'highlight' : ''}`} onClick={() => this.props.changeStateCritiria('starred')}>
+            <div className={`header-nav flex  ${this.props.critiria === 'starred' ? 'highlight-less' : ''}`} onClick={() => this.props.changeStateCritiria('starred')}>
                 <i className="fa-solid fa-star fa-nav"></i>
                 <div className="nav-txt">
                     <p className="nav-head">Starred</p>
                 </div>
             </div>
-            <div className={`header-nav flex ${this.props.critiria === 'draft' ? 'highlight' : ''}`} onClick={() => this.props.changeStateCritiria('draft')}>
+            <div className={`header-nav flex ${this.props.critiria === 'draft' ? 'highlight-less' : ''}`} onClick={() => this.props.changeStateCritiria('draft')}>
                 <i className="fa-brands fa-firstdraft fa-nav"></i>
                 <div className="nav-txt">
                     <p className="nav-head">Draft</p>
                 </div>
             </div>
-            <div className={`header-nav flex ${this.props.critiria === 'trash' ? 'highlight' : ''}`} onClick={() => this.props.changeStateCritiria('trash')} >
+            <div className={`header-nav flex ${this.props.critiria === 'trash' ? 'highlight-less' : ''}`} onClick={() => this.props.changeStateCritiria('trash')} >
                 <i className="fa-solid fa-trash-can fa-nav trash"></i>
                 <div className="nav-txt">
                     <p className="nav-head">Trash</p>

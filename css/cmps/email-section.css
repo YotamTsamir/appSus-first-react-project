@@ -94,6 +94,7 @@
     width: 90%;
     border: 1px lightgray solid;
     flex-direction: column;
+    white-space: pre-line;
     transform: translateY(-40px);
 }
 
@@ -109,6 +110,7 @@
 
 .send-btn {
     width: 200px;
+    transform: translateY(-43px);
     box-shadow: inset 0px 1px 0px 0px #97c4fe;
     background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
     background-color: #3d94f6;
@@ -223,9 +225,13 @@
 }
 
 .highlight {
-    background-color: rgba(255, 166, 166, 0.628);
+    background-color: rgba(255, 166, 166, 0.628) !important;
     color: rgb(118, 21, 21);
     border-radius: 5px;
+}
+.highlight-less{
+    background-color: rgb(233, 231, 231);
+    border-radius: 8px;
 }
 
 .trash {

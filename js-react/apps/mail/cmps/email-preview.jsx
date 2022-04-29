@@ -30,7 +30,7 @@ export function EmailPreview({ email, onClickMail, onCheckStar, onDeleteEmail, o
     }
     let time = new Date(email.sentAt)
     let year = time.getFullYear()
-    let month = time.toLocaleString('default', { month: 'short' });
+    let month = time.toLocaleString('en-us', { month: 'short' });
     let day = time.getDate()
     let date = day + '/' + month + '/' + year
     return <div className={`email ${bcg} nav-head`}>

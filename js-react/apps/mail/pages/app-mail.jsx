@@ -12,16 +12,21 @@ export class MailApp extends React.Component {
         critiria: 'inbox',
         isNewEmail: false,
         isOpenMail: false,
-        isTrash:false,
+        isTrash: false,
         currOpenMail: {},
-        
+        draftMail: {
+            to: '',
+            subject: '',
+            body: ''
+        }
+
     }
 
 
 
     componentDidMount() {
         this.getEmails()
-     
+
     }
 
     getEmails = () => {
@@ -32,17 +37,17 @@ export class MailApp extends React.Component {
     }
 
     changeStateCritiria = (value) => {
-        this.setState({ isNewEmail: false, isOpenMail: false, critiria: value },this.getEmails)
-        
+        this.setState({ isNewEmail: false, isOpenMail: false, critiria: value }, this.getEmails)
+
     }
 
     onNewEmail = () => {
-        this.setState({ isNewEmail: true, isOpenMail: false , isTrash:false},this.getEmails)
-    
+        this.setState({ isNewEmail: true, isOpenMail: false, isTrash: false }, this.getEmails)
+
     }
 
     onSentMail = () => {
-        this.setState({ isNewEmail: false, isOpenMail: false , isTrash:false})
+        this.setState({ isNewEmail: false, isOpenMail: false, isTrash: false })
     }
 
     onDeleteEmail = (emailId) => {
@@ -57,16 +62,33 @@ export class MailApp extends React.Component {
         this.getEmails()
     }
 
+    sendDraftInfo = (email) => {
+        this.setState({ emailDits: { to: email.to, subject: email.subject, body: email.body } })
+        let emailDits = {
+            to: email.to,
+            subject: email.subject,
+            body: email.body
+        }
+       
+
+    }
+
     onOpenMail = (email) => {
-        if(email.isRead) email.isRead = false
+        if (email.isRead) email.isRead = false
         else email.isRead = true
         this.getEmails()
         // this.setState({ isOpenMail: true })
     }
 
     onClickMail = (email) => {
-        email.isRead = true
-        this.setState({ isOpenMail: true, currOpenMail: email })
+        // if (email.isDraft) {
+            // console.log('here')
+            // this.onNewEmail()
+        // }
+        // else {
+            email.isRead = true
+            this.setState({ isOpenMail: true, currOpenMail: email })
+        // }
     }
 
     render() {
@@ -78,8 +100,8 @@ export class MailApp extends React.Component {
 
                 </nav>
                 <div className="preview">
-                    { !isOpenMail && <EmailList onOpenMail={this.onOpenMail} onDeleteEmail={this.onDeleteEmail} onCheckStar={this.onCheckStar} onClickMail={this.onClickMail} emails={emails} />}
-                    {isNewEmail && <NewMail onSentMail={this.onSentMail} />}
+                    {!isOpenMail && <EmailList onOpenMail={this.onOpenMail} onDeleteEmail={this.onDeleteEmail} onCheckStar={this.onCheckStar} onClickMail={this.onClickMail} emails={emails} />}
+                    {isNewEmail && <NewMail draftMail={this.state.draftMail} onSentMail={this.onSentMail} />}
                     {isOpenMail && <EmailDetails email={this.state.currOpenMail} />}
                 </div>
             </div>

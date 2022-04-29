@@ -5,7 +5,8 @@ export const MailService = {
     getMailById,
     addSentMail,
     deleteEmail,
-    editDraftEmail
+    editDraftEmail,
+    sendLastMail
 }
 const loggedinUser = {
     email: 'user@appsus.com',
@@ -245,16 +246,20 @@ function deleteEmail(emailId) {
 function addSentMail(to, subject, body) {
     let mails = gEmails;
     let id;
-    if (mails[mails.length - 1].isDraft) {
-        id = mails[mails.length - 1].id
-        mails[mails.length - 1].isDraft = false
-        return
-    }
+    // if (mails[mails.length - 1].isDraft) {
+    //     id = mails[mails.length - 1].id
+    //     mails[mails.length - 1].isDraft = false
+    //     return
+    // }
     mails.push({
         id: utilService.makeId(),
         subject, body, isRead: true, sentAt: Date.now(), from: loggedinUser.email, sentFrom: loggedinUser.fullname, to, isChecked: false,
-        isDraft: false
+        isDraft: true
     })
+}
+
+function sendLastMail(){
+    gEmails[gEmails.length-1].isDraft = false
 }
 
 function editDraftEmail(toWho, subjectOfText, bodyOfMail) {
@@ -277,7 +282,6 @@ function query(critiria) {
     else if (critiria === 'starred') return Promise.resolve(isStar)
     else if (critiria === 'draft') return Promise.resolve(isDraft)
     else if (critiria === 'trash') return Promise.resolve(isTrash)
-    // return Promise.resolve(emails)
 }
 
 function getMailById(mailId) {
