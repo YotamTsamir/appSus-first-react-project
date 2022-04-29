@@ -1,65 +1,95 @@
-@media(max-width:1300px){
-    .text-preview{
+@media(max-width:1300px) {
+    .text-preview {
         width: 50%;
     }
 }
 
-@media(max-width:960px){
-    .text-preview{
+@media(max-width:960px) {
+    .text-preview {
         width: 40%;
     }
 }
-    
 
 
-@media(max-width:780px){
-    .email{
+
+@media(max-width:780px) {
+    .email {
         height: 141px;
         width: 95%;
         display: flex;
-        /* gap:3rem */
-        justify-content: space-between;
     }
-    .title{
+
+    .email-nav {
+        width: 50%;
+    }
+
+    .header-nav {
+        width: 150%;
+    }
+
+    .dad {
+        width: 35%;
+    }
+
+    .child {
+        transform: translateX(-45px);
+    }
+
+    .title {
         width: 100%;
     }
-    p{
+
+    p {
         margin: 0;
         margin-bottom: 5px;
     }
-    .email-nav{
+
+    .email-nav {
         justify-content: space-between;
         height: 250px;
+        margin-right: 0;
+        margin-left: 0;
+        transform: translateX(6px);
     }
-    p.bold.coma{
+
+    p.bold.coma {
         display: none;
     }
-    .pop{
+
+    .pop {
         right: 5%;
         transform: translatey(-16px);
 
     }
-    .mail-info{
+
+    .mail-info {
         flex-direction: column;
-        justify-content:center;
-        width: 40%;
-        gap:10px;
+        justify-content: center;
+        width: 150%;
+        gap: 10px;
     }
-    .text-preview{
+
+    .text-preview {
         flex-direction: column;
         gap: 5px;
         margin-left: 0;
     }
-    .phone-date{
+
+    .phone-date {
         display: none;
         /* padding-right: 15px;
         display: block;
         justify-self: flex-end; */
     }
-    .date{
+
+    .date {
         /* display: none; */
         padding-right: 15px;
         display: block;
         justify-self: flex-end;
+    }
+
+    .add-mail-btn {
+        transform: translateX(4px);
     }
 }

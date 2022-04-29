@@ -4,18 +4,6 @@ import { LongText } from "./long-text.jsx";
 export function EmailPreview({ email, onClickMail, onCheckStar, onDeleteEmail, onOpenMail }) {
     let titleLength = 50
     let bodyLength = 130
-    // window.addEventListener('resize', () => {
-    //     console.log(window.innerWidth)
-    //     switch (window.innerWidth) {
-    //         case 1600:
-    //             titleLength=30
-    //             bodyLength=100
-    //             break;
-        
-    //         default:
-    //             break;
-    //     }
-    // })
     let isRead = 'bold';
     let bcg = '';
     let envFav = <i onClick={(ev) => { onOpenMail(email), ev.stopPropagation() }} className="fa-solid fa-envelope hidden"></i>

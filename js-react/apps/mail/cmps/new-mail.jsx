@@ -1,6 +1,5 @@
 import { EmailNav } from "./email-nav.jsx"
 import { MailService } from "../services/mail.service.js"
-
 export class NewMail extends React.Component {
 
     state = {
@@ -13,12 +12,18 @@ export class NewMail extends React.Component {
 
 
     componentDidMount() {
-        console.log(this.props.isDraft)
         const { to, subject, body } = this.state
         MailService.addSentMail(to, subject, body)
+   
+        if (this.props.noteMail !=='') {
+            this.setState({ body: this.props.noteMail }, this.onDraft)
+            console.log(this.props.noteMail)
+        }
         let interval = setInterval(() => this.onDraft(), 3000)
         this.setState({ interval })
+        console.log(this.props.noteMail)
     }
+    
 
     onDraft = () => {
         const { to, subject, body } = this.state
@@ -27,7 +32,7 @@ export class NewMail extends React.Component {
 
     componentWillUnmount() {
         clearInterval(this.state.interval)
-        this.setState({ interval: '' })
+        this.setState({ interval: '' , body: ''})
         // clearInterval(interval)
     }
 
@@ -50,6 +55,7 @@ export class NewMail extends React.Component {
         const { to, subject, body } = this.state
         return <section className="new-mail-section">
             <div className="new-mail-msg">
+                  <button onClick={() => {this.props.onSentMail()}}>X</button>
                 <p className="new-msg">new messege</p>
             </div>
             <form className="new-mail" onSubmit={this.onSendEmail}>
@@ -60,5 +66,6 @@ export class NewMail extends React.Component {
             </form>
 
         </section>
+      
     }
 }

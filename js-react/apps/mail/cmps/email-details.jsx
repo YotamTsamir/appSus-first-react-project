@@ -32,11 +32,7 @@ export class EmailDetails extends React.Component {
             <p className="email-details"><span className="bold">{email.sentFrom}:</span> {email.from}</p>
             <h1 className="email-details">{email.subject}</h1>
             <p className="email-body email-details">{email.body}</p>
-<<<<<<< HEAD
-           <NavLink to={`/notes/:?mailFrom=${email.sentFrom}&mailSubject=${email.subject}&emailBody=${email.body}`}>send as note</NavLink>
-=======
-           <NavLink to={`/notes/:?mailFrom=${email.sentFrom}&mailSubject=${email.subject}&&emailBody=${email.body}`}>send as note</NavLink>
->>>>>>> e6e81b5f561fba2bf3017538682a3e9d0f78bfc1
+           <NavLink to={`/notes/:?mailFrom=${email.sentFrom}&mailSubject=${email.subject}&&emailBody=${email.body}`}> <button className="send-btn send-note"><i className="fa-solid fa-paper-plane"></i></button></NavLink>
             </div>
         </section>
     }

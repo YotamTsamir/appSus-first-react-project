@@ -30,7 +30,7 @@ export class EmailNav extends React.Component {
 
     render() {
         const { inbox, sent } = this.state
-        return <nav className="email-nav">
+        return <nav className="email-nav child">
             <button className="add-mail-btn" onClick={() => this.props.onNewEmail()}> <img className="add-mail" src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" alt="" />
                 <div className="nav-txt">
                     <p className="btn-txt">Compose</p>

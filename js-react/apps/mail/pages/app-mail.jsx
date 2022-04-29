@@ -12,6 +12,7 @@ export class MailApp extends React.Component {
         critiria: 'inbox',
         isNewEmail: false,
         isOpenMail: false,
+        noteMail: '',
         isTrash: false,
         currOpenMail: {},
         draftMail: {
@@ -26,7 +27,11 @@ export class MailApp extends React.Component {
 
     componentDidMount() {
         this.getEmails()
-        
+        let noteData = new URLSearchParams(this.props.location.search)
+        let noteValue = noteData.get('noteTitle')
+        if (noteValue) {
+            this.setState({ isNewEmail: true, noteMail: noteValue })
+        }
     }
 
     getEmails = () => {
@@ -42,12 +47,21 @@ export class MailApp extends React.Component {
     }
 
     onNewEmail = () => {
+        document.body.style.pointerEvents = 'none'
         this.setState({ isNewEmail: true, isOpenMail: false, isTrash: false }, this.getEmails)
 
     }
 
+    onCloseMail = (prevState) => {
+        document.body.style.pointerEvents = 'all'
+        this.setState(...prevState, { isOpenMail: false, noteMail: '' }, this.getEmails)
+        // this.setState({isOpenMail:false},this.getEmails)
+
+    }
+
     onSentMail = () => {
-        this.setState({ isNewEmail: false, isOpenMail: false, isTrash: false })
+        document.body.style.pointerEvents = 'all'
+        this.setState({ isNewEmail: false, isOpenMail: false, isTrash: false, noteMail: '' })
     }
 
     onDeleteEmail = (emailId) => {
@@ -69,7 +83,7 @@ export class MailApp extends React.Component {
             subject: email.subject,
             body: email.body
         }
-       
+
 
     }
 
@@ -82,12 +96,12 @@ export class MailApp extends React.Component {
 
     onClickMail = (email) => {
         // if (email.isDraft) {
-            // console.log('here')
-            // this.onNewEmail()
+        // console.log('here')
+        // this.onNewEmail()
         // }
         // else {
-            email.isRead = true
-            this.setState({ isOpenMail: true, currOpenMail: email })
+        email.isRead = true
+        this.setState({ isOpenMail: true, currOpenMail: email })
         // }
     }
 
@@ -95,13 +109,13 @@ export class MailApp extends React.Component {
         const { emails, isNewEmail, isOpenMail } = this.state
         return <section>
             <div className="emails-section">
-                <nav className="email-nav">
+                <nav className="email-nav dad">
                     <EmailNav critiria={this.state.critiria} onNewEmail={this.onNewEmail} changeStateCritiria={this.changeStateCritiria} />
 
                 </nav>
                 <div className="preview">
                     {!isOpenMail && <EmailList onOpenMail={this.onOpenMail} onDeleteEmail={this.onDeleteEmail} onCheckStar={this.onCheckStar} onClickMail={this.onClickMail} emails={emails} />}
-                    {isNewEmail && <NewMail draftMail={this.state.draftMail} onSentMail={this.onSentMail} />}
+                    {isNewEmail && <NewMail onCloseMail={this.onCloseMail} noteMail={this.state.noteMail} draftMail={this.state.draftMail} onSentMail={this.onSentMail} />}
                     {isOpenMail && <EmailDetails email={this.state.currOpenMail} />}
                 </div>
             </div>
