@@ -27,7 +27,6 @@ export class Books extends React.Component {
     getBooks = () => {
         BookService.query(this.state.filterBy)
         .then(books =>{
-            console.log('here')
              this.setState({books})
             })
 

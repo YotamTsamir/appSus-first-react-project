@@ -24,7 +24,9 @@ export class NotesApp extends React.Component{
 
 
     }
-    
+    onToggleTodo = () => {
+        this.loadNotes()
+    }
     loadNotes = () => {
         notesService.query(this.state.notes)
         .then( notes => {
@@ -35,7 +37,9 @@ export class NotesApp extends React.Component{
     onAddNote = () => {
         this.loadNotes()   
     }
-
+    onPinNote = () => {
+        this.loadNotes()
+    }
     onDeleteNote = () => {
         this.loadNotes();
     }
@@ -50,7 +54,7 @@ export class NotesApp extends React.Component{
 
         return <div key="note" className="notes-app">
             <NotesDetails onAddNote={this.onAddNote} emailData={{emailBody, emailSentFrom, emailSubject}}/>
-            <NoteList  notes={notes} onDeleteNote={this.onDeleteNote} onNoteUpdated={this.onNoteUpdated}/>
+            <NoteList onToggleTodo={this.onToggleTodo} onPinNote={this.onPinNote}  notes={notes} onDeleteNote={this.onDeleteNote} onNoteUpdated={this.onNoteUpdated}/>
         </div>
     }
 }

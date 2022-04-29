@@ -1,8 +1,6 @@
 .notes-app .notes-list {
     column-count: 4;
-    /* display: flex;
-    justify-content: center;
-
-    flex-wrap: wrap; */
     margin-top: 20px;
+    margin-left: 8%;
+    margin-right: 8%;
 }

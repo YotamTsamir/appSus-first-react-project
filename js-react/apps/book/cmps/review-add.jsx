@@ -27,7 +27,6 @@ export class ReviewAdd extends React.Component {
         const value = target.value
         const stateKey = target.name
         this.setState((prevState)=>({review:{...prevState.review,[stateKey]:value}}),()=>{
-            // console.log(this.state)
         })
     }
 

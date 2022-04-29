@@ -8,9 +8,7 @@ export class UserPopup extends React.Component {
     timeoutId;
 
     componentDidMount() {
-        console.log('i have mounted')
         this.removeEvent = eventBusService.on('user-msg', (msg) => {
-            console.log('this is the msg',msg)
             this.setState({msg})
             if (this.timeoutId) clearTimeout(this.timeoutId)
             this.timeoutId = setTimeout(this.onCloseMsg, 3000)

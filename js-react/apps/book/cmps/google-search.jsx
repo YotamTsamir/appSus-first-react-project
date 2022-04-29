@@ -16,11 +16,7 @@ export class GoogleSearch extends React.Component{
         
         axios.get(GOOGLE_API+SEARCH_VAL)
         .then(result =>{
-            console.log(result)
             this.setState({books:result.data.items})
-
-            console.log(this.state.books)
-        
         } 
         )
     }
@@ -34,14 +30,11 @@ export class GoogleSearch extends React.Component{
         
     }
     changeSearch = ({target}) => {
-        // console.log(target)
         this.setState({searchVal:target.value})
     }
     render(){
         const {searchVal,books} = this.state
-        // let books = this.state.books.map(book =>{return <li>{book.volumeInfo.title}</li>)
 
-        // } 
         return <div>
             <form onSubmit={this.getGoogle}>
             <input onChange={this.changeSearch} value={searchVal} type="text" name="google-search"/>

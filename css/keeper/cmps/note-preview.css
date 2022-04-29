@@ -5,10 +5,9 @@
 .notes-app .note {
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin-bottom: 20px;
     align-items: center;
     overflow: hidden;
-    width: 238px;
     padding: 0px 0px 12px 0px;
     border: 2px solid #e3e5e7;
     border-radius: 15px;
@@ -49,7 +48,7 @@
 .notes-app button{
   background-color: #ffffff; 
   border: none;
-  padding: 0;
+  /* padding: 0; */
   cursor: pointer;
 }
 .notes-app .fa-solid, .fa-brands{
@@ -95,10 +94,9 @@
 
 .notes-app .input-submit-title{
     font-size: x-large;
-    padding-left: 0rem;
+    padding-left: 6px
 }
 .notes-app .input-submit-txt{
-    padding: 20px 0 40px 0;
     font-size: larger;
 }
 .notes-app .input-submit-title:focus{
@@ -126,15 +124,25 @@
 }
 .notes-app .thumbtack-btn-container {
     display: flex;
+    position: relative;
+    width: 100%;
+    height: 0%;
     justify-content: flex-end;
-    padding: 10px;
-    width: 400px;
     font-size: xx-large
 }
 
-.notes-app .trash-btn-container {
+.notes-app .thumbtack-btn-container button {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+}
+
+.notes-app .note-btn-container {
     display: flex;
+    align-items: center;
     bottom: 0;
+    padding-top: 20px;
 }
 
 .notes-app #file-btn {
@@ -182,7 +190,8 @@
 }
 
 .note-app-note-edit.shown {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 600px;
 }
 
@@ -223,3 +232,16 @@
     display: flex;
 }
 
+
+.note-btn-container .fa-solid{
+    color: rgb(123, 122, 122);
+}
+
+.close-edit-btn {
+    align-self: flex-end;
+    padding: 5px;
+}
+
+.todo-done {
+    text-decoration: line-through;
+}

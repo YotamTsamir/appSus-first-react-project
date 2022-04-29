@@ -466,9 +466,6 @@ function onAddBookGoogle(book) {
   })
   storageService.saveToStorage(STORAGE_KEY, gBooks)
   gBooks = storageService.loadFromStorage(STORAGE_KEY)
-
-  console.log('book added')
-  console.log(gBooks)
 }
 
 
@@ -492,7 +489,6 @@ function addReview(review, bookId) {
       book.reviews = (book.reviews) ? book.reviews : []
       review['id'] = utilService.makeId()
       book.reviews.push(review)
-      console.log(book.reviews)
       return book
      
     })

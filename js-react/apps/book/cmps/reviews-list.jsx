@@ -1,7 +1,6 @@
 import { BookService } from "../services/books-service.js";
 
 export function ReviewList({reviews,bookId,onRemove}){
-    console.log(reviews)
 if(!reviews) return <section>Loading</section>
     return <section >
         {reviews.map(review =>{

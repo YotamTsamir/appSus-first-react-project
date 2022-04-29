@@ -27,7 +27,7 @@ export class NoteList extends React.Component {
     onNoteUpdated = () => {
         this.props.onNoteUpdated()
     }
-
+    
     onCloseModal = () => {
         this.setState({isEditShown: false, noteToEdit:  {
             id: utilService.makeId(),
@@ -47,10 +47,10 @@ export class NoteList extends React.Component {
     }
     
     render() {
-        const {notes, onDeleteNote} = this.props
+        const {notes, onDeleteNote, onPinNote, onToggleTodo} = this.props
         return <section className="notes-list">  
             <NoteEdit onCloseModal={this.onCloseModal} note={this.state.noteToEdit} isShown={this.state.isEditShown} onNoteUpdated={this.onNoteUpdated}/> 
-            {notes.map(note=> <NotePreview note={note} key={note.id}  onDeleteNote={onDeleteNote} onEditNote={this.onEditNote}/>)}
+            {notes.map(note=> <NotePreview onToggleTodo={onToggleTodo} onPinNote={onPinNote} note={note} key={note.id}  onDeleteNote={onDeleteNote} onEditNote={this.onEditNote}/>)}
         </section>
     } 
 }
