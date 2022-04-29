@@ -9,7 +9,7 @@ export class NotesDetails extends React.Component{
     myRefTodos= React.createRef()
     state = {
         isColorInputShown: false,
-        txtInputValue: '',
+        txtInputValue: this.props.emailBody || '',
         note: {
             id: utilService.makeId(),
             type: 'note-txt',
@@ -18,12 +18,22 @@ export class NotesDetails extends React.Component{
             info: {
                 txt: '',
                 url: '',
-                title: '',
-                label: '',
+                title: this.props.emailSubject || '',
                 todos: []       
             },
         }
     }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.emailData !== this.props.emailData) {
+            const {emailSubject, emailBody, emailSentFrom} = this.props.emailData
+            console.log(emailBody);
+            this.setState({txtInputValue: emailBody, note: {...this.state.note, title: emailSubject}}, () => {
+                console.log(this.state);
+            })
+        }
+    }
+
 
     onHandleChangeTxt = ({target}) => {
         this.setState({txtInputValue: target.value})    
@@ -48,7 +58,6 @@ export class NotesDetails extends React.Component{
     }
 
     onImgInput = (ev) => {
-        console.log('on img input bitch');
         notesService.loadImageFromInput(ev).then((imgSrc) => {
             this.setState({note:{...this.state.note, type: 'note-img', info: {...this.state.note.info, url: imgSrc}}})
             this.imgRef.current.style.display = 'block'
@@ -57,7 +66,6 @@ export class NotesDetails extends React.Component{
     }
 
     onSubmit = (event) => {
-        console.log('ughhhhhhhhhhhhhhhhhhhhhhh (submit tho)');
         event.preventDefault()
         switch(this.state.note.type){
             case "note-img":
@@ -113,12 +121,10 @@ export class NotesDetails extends React.Component{
             this.myRefImg.current.classList.remove("selected-format")
             this.myRefVideo.current.classList.remove("selected-format")
         }
-        console.log('setting freaking type');
         this.setState({note:{...this.state.note, type: event.target.id}})
     }
 
     toggleColorInput = () => {
-        console.log('toggling the bitch');
         this.setState({isColorInputShown:!this.state.isColorInputShown})
     }
     getPlaceholder = () => {
@@ -135,8 +141,7 @@ export class NotesDetails extends React.Component{
     }
 
     render(){
-        console.log('!!!!!!!!!!', this.state);
-        const {txt, url,title, label, todos} = this.state.note.info
+        const {txt, url,title, todos} = this.state.note.info
         const value = this.state.txtInputValue;
             return <div className="form-container" >
             <form style={{backgroundColor: this.state.note.backgroundColor}} className="form-submit" onSubmit={this.onSubmit}>

@@ -1,6 +1,7 @@
 body{
     margin: 0;
     font-size: 0.875rem;
+    overflow-x: hidden;
 }
 .logo{
     margin-left: 20px;
