@@ -33,7 +33,7 @@ const gNotes = storageService.loadFromStorage() || [
         id: utilService.makeId(),
         type: "note-todos",
         info: {
-        label: "What to know about JS",
+        title: "What to know about JS",
         todos: [
         { txt: "You can add properties to almost everything", doneAt: null },
         { txt: "Functions are objects", doneAt: 187111111 },
@@ -71,7 +71,7 @@ const gNotes = storageService.loadFromStorage() || [
      id: utilService.makeId(),
      type: "note-todos",
      info: {
-     label: "Get my stuff together",
+     title: "Get my stuff together",
      todos: [
      { txt: "Driving liscence", doneAt: null },
      { txt: "Coding power", doneAt: 187111111 }
