@@ -1,55 +1,60 @@
 import { notesService } from "../services/note.service.js"
+import { NoteEdit } from "./note-edit.jsx";
 
-export function NotePreview({note, onDeleteNote}){
-
-    const onDeleteNotePreview = () => {
+export function NotePreview({note, onDeleteNote, onEditNote}){
+    
+    const onDeleteNotePreview = (event) => {
+        console.log(event);
+        event.stopPropagation()
         notesService.deleteNote(note.id).then(() => {
             onDeleteNote();
         })
     }
 
-    
+    const selectNote = () => {
+        onEditNote(note)
+    }
+
     if(note.type === "note-txt"){
-        return <div className="note" key={note.id}>
+        return <div onClick={selectNote} className="note" key={note.id} style={{backgroundColor: note.backgroundColor}}>
+            <div className="note-txt" >{note.info.txt}</div>
         <div className="thumbtack-btn-container" >
             <button hidden><i className="fa-solid fa-thumbtack"></i></button> 
         </div> 
-            <div className="note-txt" >{note.info.txt}</div>
             <div className="trash-btn-container">
-            <button onClick={() => onDeleteNotePreview(note.id)}><i className="fa-solid fa-trash"></i></button>
+            <button onClick={onDeleteNotePreview}><i className="fa-solid fa-trash"></i></button>
             </div>
         </div>
     }
     if(note.type === "note-img"){
-        console
-        return <div className="note" key={note.id}>
+        return <div onClick={selectNote} className="note" key={note.id}>
+        <img className="note-preview-img" src={note.info.url} alt="" />
         <div className="thumbtack-btn-container" >
             <button hidden><i className="fa-solid fa-thumbtack"></i></button> 
         </div>
-        
         <div className="note-title" >{note.info.title}</div> 
         <div className="trash-btn-container">
-            <button onClick={() => onDeleteNotePreview(note.id)}><i className="fa-solid fa-trash"></i></button>
+            <button onClick={onDeleteNotePreview}><i className="fa-solid fa-trash"></i></button>
         </div>
     </div>
     }
     if(note.type === "note-video"){
-        return <div className="note" key={note.id}>
-        <div className="thumbtack-btn-container" >
-            <button hidden><i  className="fa-solid fa-thumbtack"></i></button> 
-        </div>
+        return <div onClick={selectNote} className="note" key={note.id}>
         <iframe width="260" height="200"
             src={note.info.url}>
         </iframe>
         <div className="note-title" >{note.info.title}</div>
+        <div className="thumbtack-btn-container" >
+            <button hidden><i  className="fa-solid fa-thumbtack"></i></button> 
+        </div>
         <div className="trash-btn-container">
-            <button onClick={() => onDeleteNotePreview(note.id)}><i className="fa-solid fa-trash"></i></button>
+            <button onClick={onDeleteNotePreview}><i className="fa-solid fa-trash"></i></button>
         </div>
     </div> 
     }
     if(note.type === "note-todos"){
         const todos = note.info.todos
-        return <div className="note" key={note.id}>
+        return <div onClick={selectNote} className="note" key={note.id}>
         <div className="thumbtack-btn-container" >
             <button hidden><i className="fa-solid fa-thumbtack"></i></button> 
         </div>
@@ -61,7 +66,7 @@ export function NotePreview({note, onDeleteNote}){
             </ul> 
         })}
         <div className="trash-btn-container">
-            <button onClick={() => onDeleteNotePreview(note.id)}><i className="fa-solid fa-trash"></i></button>
+            <button onClick={onDeleteNotePreview}><i className="fa-solid fa-trash"></i></button>
         </div>
     </div> 
     }

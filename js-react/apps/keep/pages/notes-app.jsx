@@ -27,14 +27,16 @@ export class NotesApp extends React.Component{
         this.loadNotes();
     }
 
-  
+    onNoteUpdated = () => {
+        this.loadNotes();
+    }
 
     render(){
         const notes = this.state.notes
 
         return <div key="note" className="notes-app">
             <NotesDetails onAddNote={this.onAddNote}/>
-            <NoteList notes={notes} onDeleteNote={this.onDeleteNote}/>
+            <NoteList notes={notes} onDeleteNote={this.onDeleteNote} onNoteUpdated={this.onNoteUpdated}/>
         </div>
     }
 }

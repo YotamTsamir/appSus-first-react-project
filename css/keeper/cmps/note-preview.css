@@ -9,10 +9,11 @@
     align-items: center;
     overflow: hidden;
     width: 238px;
-    padding: 4px 16px 12px 16px;
+    padding: 0px 0px 12px 0px;
     border: 2px solid #e3e5e7;
     border-radius: 15px;
     break-inside: avoid;
+    cursor: pointer;
 }
 .notes-app .form-container{
     display: flex;
@@ -27,16 +28,20 @@
     margin-top: 20px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.317);
     border-radius: 10px;
-
+    transition: background-color 200ms ease-in-out;
 }
 .notes-app .note-img {
     height: 300px;
 
 }
-
+.note-preview-img {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
 .notes-app .note-title{
     font-weight: 600;
-    padding: 20px 10px;
+    padding: 10px 10px;
 }
 .input-submit{
     width: 800px;
@@ -45,6 +50,7 @@
   background-color: #ffffff; 
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 .notes-app .fa-solid, .fa-brands{
     display: flex;
@@ -84,6 +90,7 @@
     margin: 5px;
     margin-left: 10px;
     border: none;
+    transition: background-color 200ms ease-in-out;
 }
 
 .notes-app .input-submit-title{
@@ -115,7 +122,7 @@
     box-shadow: 0px 0px 20px 0px #00000043;
     border-radius: 50%;
     background-color: rgb(232, 228, 228);
-    color:rgb(151, 148, 148);
+    color:rgb(144, 142, 142);
 }
 .notes-app .thumbtack-btn-container {
     display: flex;
@@ -150,3 +157,69 @@
     object-fit: cover;
     border-radius: 8px;
 }
+
+.overlay {
+    background: rgba(0,0,0,.25);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.note-app-note-edit {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid black;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+}
+
+.note-app-note-edit.shown {
+    display: block;
+    width: 600px;
+}
+
+.form-submit-edit .input-submit-title, .form-submit-edit .input-submit-txt{
+    width: 530px;   
+    padding: 5px;
+}
+
+.note-app-note-edit .input-submit{
+    width: 550px;
+}
+.note-txt {
+    padding-top: 8px;
+}
+.input-color-container.hidden {
+    display: none;
+}
+.input-color-container .item{
+    width: 35px;
+    height: 35px;
+    margin: 3px;
+    border-radius: 50%;
+}
+.input-color-btn {
+    position: relative;
+}
+.input-color-container{
+    position: absolute;
+    background-color: white;
+    border: 1px solid rgb(214, 211, 211);
+    border-radius: 8px;
+    top: 32px;
+    left: 0;
+    padding: 10px;
+}
+
+.color-input{
+    display: flex;
+}
+

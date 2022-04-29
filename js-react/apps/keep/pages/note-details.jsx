@@ -1,19 +1,20 @@
 import { utilService } from "../../../services/util.service.js"
 import { notesService } from "../services/note.service.js"
-
+import { ColorInput } from "../cmps/color-input.jsx"
 export class NotesDetails extends React.Component{
     myRefTxt= React.createRef()
     myRefImg= React.createRef()
+    imgRef = React.createRef()
     myRefVideo= React.createRef()
     myRefTodos= React.createRef()
     state = {
+        isColorInputShown: false,
         txtInputValue: '',
         note: {
             id: utilService.makeId(),
             type: 'note-txt',
             isPinned: false,
             backgroundColor: '',
-
             info: {
                 txt: '',
                 url: '',
@@ -25,53 +26,65 @@ export class NotesDetails extends React.Component{
     }
 
     onHandleChangeTxt = ({target}) => {
-        this.setState({...this.state, txtInputValue: target.value})    
+        this.setState({txtInputValue: target.value})    
     }
     
     onHandleChangeTitle = ({target}) => {
-        this.setState({...this.state, note:{...this.state.note, info: {...this.state.note.info, title: target.value}}})
+        console.log('change title');
+        this.setState({note:{...this.state.note, info: {...this.state.note.info, title: target.value}}})
     }
 
     clearForm = () => {
+        console.log('clear fucking form');
         notesService.addNote(this.state.note).then(() => {
-            this.setState({...this.state, txtInputValue: ''})
-            this.setState({...this.state, note:{...this.state.note, id: utilService.makeId()}})
-            this.setState({...this.state, note:{...this.state.note, type: 'note-txt'}})
-            this.setState({...this.state, note:{...this.state.note, info: {...this.state.note.info, txt: ''}}})
-            this.setState({...this.state, note:{...this.state.note, info: {...this.state.note.info, title: ''}}})
-            this.setState({...this.state, note:{...this.state.note, info: {...this.state.note.info, todos: []}}})
+            this.setState({txtInputValue: ''})
+            this.setState({note:{...this.state.note, id: utilService.makeId()}})
+            this.setState({note:{...this.state.note, type: 'note-txt'}})
+            this.setState({note:{...this.state.note, info: {...this.state.note.info, txt: ''}}})
+            this.setState({note:{...this.state.note, info: {...this.state.note.info, title: ''}}})
+            this.setState({note:{...this.state.note, info: {...this.state.note.info, todos: []}}})
             this.props.onAddNote()
         })
     }
+
     onImgInput = (ev) => {
+        console.log('on img input bitch');
         notesService.loadImageFromInput(ev).then((imgSrc) => {
-            this.setState({...this.state, note:{...this.state.note, info: {...this.state.note.info, url: imgSrc}}}, this.clearForm)
-            document.querySelector('.my-img').style.display = 'block'
-            document.querySelector('.my-img').src = imgSrc;
+            this.setState({note:{...this.state.note, type: 'note-img', info: {...this.state.note.info, url: imgSrc}}})
+            this.imgRef.current.style.display = 'block'
+            this.imgRef.current.src = imgSrc;
         })
     }
+
     onSubmit = (event) => {
+        console.log('ughhhhhhhhhhhhhhhhhhhhhhh (submit tho)');
         event.preventDefault()
         switch(this.state.note.type){
             case "note-img":
+                console.log('hi rotem');
+                this.imgRef.current.src = "";
+                this.clearForm()
                 break
             case "note-video":
                 const newValue = this.state.txtInputValue.replace('watch?v=', 'embed/')
-                this.setState({...this.state, note:{...this.state.note, info: {...this.state.note.info, url: newValue}}}, this.clearForm)
+                this.setState({note:{...this.state.note, info: {...this.state.note.info, url: newValue}}}, this.clearForm)
                 break
             case "note-todos":
                 const newTodoTxts = this.state.txtInputValue.split(',')
                 const newTodo = newTodoTxts.map((todoTxt => {
                     return {txt: todoTxt, doneAt: null}
                 }))
-                this.setState({...this.state, note:{...this.state.note, info: {...this.state.note.info, todos: newTodo}}}, this.clearForm)
+                this.setState({note:{...this.state.note, info: {...this.state.note.info, todos: newTodo}}}, this.clearForm)
                 break
             default : 
-                this.setState({...this.state, note:{...this.state.note, info: {...this.state.note.info, txt: this.state.txtInputValue}}}, this.clearForm)
+                this.setState({note:{...this.state.note, info: {...this.state.note.info, txt: this.state.txtInputValue}}}, this.clearForm)
                 break     
         }
     }
-
+    onHandleStyleChange = (value) => {
+        console.log(value);
+        this.setState({note: {...this.state.note, backgroundColor: value}})
+    }
     onSetNoteType = (event) => {    
         if(event.target.id === "note-txt") {
             this.myRefTxt.current.classList.add("selected-format")
@@ -100,7 +113,13 @@ export class NotesDetails extends React.Component{
             this.myRefImg.current.classList.remove("selected-format")
             this.myRefVideo.current.classList.remove("selected-format")
         }
-        this.setState({...this.state, note:{...this.state.note, type: event.target.id}})
+        console.log('setting freaking type');
+        this.setState({note:{...this.state.note, type: event.target.id}})
+    }
+
+    toggleColorInput = () => {
+        console.log('toggling the bitch');
+        this.setState({isColorInputShown:!this.state.isColorInputShown})
     }
     getPlaceholder = () => {
         switch(this.state.note.type){
@@ -116,24 +135,25 @@ export class NotesDetails extends React.Component{
     }
 
     render(){
+        console.log('!!!!!!!!!!', this.state);
         const {txt, url,title, label, todos} = this.state.note.info
         const value = this.state.txtInputValue;
-        
-        return <div className="form-container">
-            <form className="form-submit" onSubmit={this.onSubmit}>
-                <div className="input-submit">
-                <img src="" className="my-img" />
-                {this.state.note.type !== 'note-txt' && this.state.note.type !== 'note-todos' && <input className="input-submit-title" type="text" placeholder="Title..." onChange={this.onHandleChangeTitle} name="title" value={title}/>}
-                <input className="input-submit-txt" type="text" placeholder={this.getPlaceholder()} onChange={this.onHandleChangeTxt} name="txt" value={value}/>                        
+            return <div className="form-container" >
+            <form style={{backgroundColor: this.state.note.backgroundColor}} className="form-submit" onSubmit={this.onSubmit}>
+                <div  className="input-submit">
+                <img src="" className="my-img" ref={this.imgRef} />
+                {this.state.note.type !== 'note-txt' && this.state.note.type !== 'note-todos' && <input className="input-submit-title" style={{backgroundColor: this.state.note.backgroundColor}} autoComplete="off" type="text" placeholder="Title..." onChange={this.onHandleChangeTitle} name="title" value={title}/>}
+                <input style={{backgroundColor: this.state.note.backgroundColor}} autoComplete="off" className="input-submit-txt " type="text" placeholder={this.getPlaceholder()} onChange={this.onHandleChangeTxt} name="txt" value={value}/>                        
                 <section className="actions-container">
-                    <button onClick={this.onSetNoteType}  type="button"><i ref={this.myRefTxt} id="note-txt" className="fa-solid fa-a"></i></button>
-                    
+                    <button onClick={this.onSetNoteType}  type="button"><i ref={this.myRefTxt} id="note-txt" className="fa-solid fa-a selected-format"></i></button>
                     <button id="file-btn" type="button"> <input type="file" className="file-input btn" name="image" onChange={this.onImgInput} /><i ref={this.myRefImg}  id="note-img" className="fa-solid fa-image"></i></button>
                     <button onClick={this.onSetNoteType} type="button"><i ref={this.myRefVideo} id="note-video" className="fa-brands fa-youtube"></i></button>
                     <button onClick={this.onSetNoteType}  className="last-action-btn" type="button"><i ref={this.myRefTodos} id="note-todos" className="fa-solid fa-list-ul"></i></button>
+                    <button type="button" className="input-color-btn" onClick={this.toggleColorInput}><ColorInput handleStyleChange={(value) => this.onHandleStyleChange(value)} isShown={this.state.isColorInputShown}/><i className="fa-solid fa-palette"></i></button>
                 </section>
                 <input className="form-submit-btn" type="submit" value="submit" />
                 </div>
+                
         </form> 
         </div>
     }

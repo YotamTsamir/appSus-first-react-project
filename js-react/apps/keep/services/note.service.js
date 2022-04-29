@@ -8,6 +8,7 @@ export const notesService = {
     addNote,
     deleteNote,
     loadImageFromInput,
+    editNote,
 }
 
 const gNotes = storageService.loadFromStorage() || [
@@ -127,4 +128,12 @@ function loadImageFromInput(ev, onImageReady){
         reader.readAsDataURL(ev.target.files[0])
     })
 
+}
+
+function editNote(note) {
+    let notes = storageService.loadFromStorage(STORAGE_KEY)
+    const idx = notes.findIndex((savedNote) => note.id === savedNote.id)
+    notes.splice(idx, 1, note)
+    storageService.saveToStorage(STORAGE_KEY, notes)
+    return Promise.resolve()
 }
