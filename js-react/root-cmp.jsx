@@ -19,7 +19,7 @@ export function App() {
         <Switch>
         <Route path='/home/:bookId' component={BookDetails}/>
         <Route path='/mail' component={MailApp}/>
-        <Route path='/notes/' component={NotesApp}/>
+        <Route path='/notes/:mailDetails' component={NotesApp}/>
         <Route path='/books' component={Books}/>
         </Switch>
         </main>

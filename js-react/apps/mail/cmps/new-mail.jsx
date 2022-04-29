@@ -58,7 +58,6 @@ export class NewMail extends React.Component {
                 <textarea className="new-mail-input" autoComplete='off' value={body} name="body" id="" cols="30" rows="10" placeholder="enter messege here" onChange={this.handleChange}></textarea>
                 <button className="send-btn">send!</button>
             </form>
-                <button className="send-btn">Save as note!</button>
 
         </section>
     }

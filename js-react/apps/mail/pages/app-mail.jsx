@@ -26,7 +26,7 @@ export class MailApp extends React.Component {
 
     componentDidMount() {
         this.getEmails()
-
+        
     }
 
     getEmails = () => {
