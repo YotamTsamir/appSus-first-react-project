@@ -34,6 +34,45 @@ export class MailApp extends React.Component {
         }
     }
 
+componentDidUpdate(prevProps){
+    if (prevProps.searchTerm !== this.props.searchTerm) {
+        if (!this.props.searchTerm) {
+            this.getEmails()
+            return
+        }
+    
+    const regex = new RegExp(this.props.searchTerm, 'ig')
+    if(this.props.searchTerm) {
+        MailService.query(this.props.searchTerm,true)
+        .then(emails => {
+            this.setState({ emails: emails })
+        })
+    }
+        
+    console.log(this.props.searchTerm)
+    return
+}
+        // const filteredMales = this.state.notes.filter((note) => {
+        //     if (note.info.title) {
+                // const matchTitle = 
+                // !!note.info.title.match(regex)
+                // console.log(matchTitle)
+        //         if (matchTitle) return matchTitle
+        //     }
+        //     if (note.info.txt) {
+        //         return !!note.info.txt.match(regex)
+        //     } 
+        //     if (note.type === 'note-todos') {
+        //         return note.info.todos.reduce((acc, todo) => {
+        //             if (!!todo.txt.match(regex)) acc = true
+        //             return acc
+        //         }, false)
+        //     }
+        // });
+        // this.setState({notes: filteredNotes})
+    // }
+}
+    
     getEmails = () => {
         MailService.query(this.state.critiria)
             .then(emails => {

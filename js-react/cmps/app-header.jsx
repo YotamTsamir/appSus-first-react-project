@@ -11,8 +11,8 @@ class _AppHeader extends React.Component{
         if (this.props.location.pathname === prevProps.location.pathname) return
         if(this.props.location.pathname.includes('notes')){
             this.setState({app: 'notes'})
-        } else if (this.props.location.pathname.includes('mail')) {
-            this.setState({app: 'mail'})
+        } else if (this.props.location.pathname.includes('maill')) {
+            this.setState({app: 'maill'})
         } else {
             this.setState({app: ''})
         }
@@ -39,7 +39,7 @@ class _AppHeader extends React.Component{
         </form>
 
         <nav className="links-header">
-            <NavLink to='/mail'>Mail</NavLink>
+            <NavLink to='/maill'>Mail</NavLink>
             <NavLink to='/notes/:mailDetails'>Notes</NavLink>
             <NavLink to='/books'>Books</NavLink>
         </nav>

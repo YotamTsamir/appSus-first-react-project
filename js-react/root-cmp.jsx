@@ -29,7 +29,7 @@ export class App extends React.Component {
         <main>
         <Switch>
         <Route path='/home/:bookId' component={BookDetails}/>
-        <Route path='/mail' render={(props) => <MailApp {...props} searchTerm={app === 'mail' ? searchTerm : ''} />}/>
+        <Route path='/maill' render={(props) => <MailApp {...props} searchTerm={app === 'maill' ? searchTerm : ''}/>}/>
         <Route path='/notes/:mailDetails' render={(props) => <NotesApp {...props} searchTerm={app === 'notes' ? searchTerm : ''}/>}/>
         <Route path='/books' component={Books}/>
         </Switch>

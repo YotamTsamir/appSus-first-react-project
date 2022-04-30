@@ -270,13 +270,22 @@ function editDraftEmail(toWho, subjectOfText, bodyOfMail) {
     mails[mails.length - 1].isDraft = true
 }
 
-function query(critiria) {
+function query(critiria,isSearch) {
     let emails = gEmails
     let inboxMails = emails.filter(mail => mail.to === loggedinUser.email && !mail.isTrash)
     let sentMails = emails.filter(mail => mail.from === loggedinUser.email && !mail.isDraft && !mail.isTrash)
     let isStar = emails.filter(mail => mail.isChecked === true && !mail.isTrash)
     let isDraft = emails.filter(mail => mail.isDraft === true && !mail.isTrash)
     let isTrash = emails.filter(mail => mail.isTrash === true)
+    let searchedEmails = emails.filter(mail => {
+        if(mail.body.includes(critiria) || mail.subject.includes(critiria)){
+      return mail      
+        } 
+})
+    // if(!critiria) critiria = 'inbox'
+    if(isSearch) {
+        return Promise.resolve(searchedEmails)
+    }
     if (critiria === 'inbox') return Promise.resolve(inboxMails)
     else if (critiria === 'sent') return Promise.resolve(sentMails)
     else if (critiria === 'starred') return Promise.resolve(isStar)
