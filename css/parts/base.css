@@ -4,9 +4,10 @@ body{
     overflow-x: hidden;
 }
 .logo{
-    margin-left: 20px;
+    margin-left: 30px;
+    font-size: 20px;
 }
 .links-header{
-  margin-right: 15px;
-  font-style: italic;
+ margin-right: 25px;
+ font-size: 15px;
 }

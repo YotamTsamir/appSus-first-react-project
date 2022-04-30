@@ -39,7 +39,7 @@ class _AppHeader extends React.Component{
         </form>
 
         <nav className="links-header">
-            <NavLink to='#'>Home</NavLink>
+            <NavLink to='/#'>Home</NavLink>
             <NavLink to='/maill'>Mail</NavLink>
             <NavLink to='/notes/:mailDetails'>Notes</NavLink>
             <NavLink to='/books'>Books</NavLink>
