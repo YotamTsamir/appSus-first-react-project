@@ -50,6 +50,18 @@ export class NoteEdit extends React.Component {
     
     switch (this.state.note.type) {
       case "note-img":
+        this.setState(
+          {
+            note: {
+              ...this.state.note,
+              info: {
+                ...this.state.note.info,
+                title: this.state.note.info.title,
+              },
+            },
+          },
+          this.clearForm
+        );
         break;
       case "note-video":
         this.setState(
@@ -116,7 +128,12 @@ export class NoteEdit extends React.Component {
       return <h1 style={{ display: "none" }}>Loading...</h1>;
     const { txt, url, title, label, todos } = this.state.note.info;
     const value = this.state.txtInputValue;
+
+    if (!this.props.isShown) return <div />
+
     return (
+      <React.Fragment>
+        <div className="modal-overlay"></div> 
       <div className={this.noteEditClass()}>
         <div className="form-container">
           <form
@@ -150,6 +167,7 @@ export class NoteEdit extends React.Component {
           Close
         </button>
       </div>
+      </React.Fragment>
     );
   }
 }

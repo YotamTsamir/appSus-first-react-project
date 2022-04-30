@@ -11,19 +11,31 @@ const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
 
 
-export function App() {
-    return <Router>
+export class App extends React.Component {
+    state = {
+        app: '',
+        searchTerm: ''
+    }
+
+    onSearch = (app, searchTerm) => {
+        this.setState({app, searchTerm})
+    }
+
+    render() {
+        const {app, searchTerm} = this.state
+        return <Router>
     <section className="app">
-    <AppHeader/>
+    <AppHeader onSearch={this.onSearch}/>
         <main>
         <Switch>
         <Route path='/home/:bookId' component={BookDetails}/>
-        <Route path='/mail' component={MailApp}/>
-        <Route path='/notes/:mailDetails' component={NotesApp}/>
+        <Route path='/mail' render={(props) => <MailApp {...props} searchTerm={app === 'mail' ? searchTerm : ''} />}/>
+        <Route path='/notes/:mailDetails' render={(props) => <NotesApp {...props} searchTerm={app === 'notes' ? searchTerm : ''}/>}/>
         <Route path='/books' component={Books}/>
         </Switch>
         </main>
     </section>
     </Router>
+    }
 
 }

@@ -21,9 +21,36 @@ export class NotesApp extends React.Component{
         this.setState({emailSentFrom, mailSubject, emailBody}, ()=>{
             this.loadNotes()
         })
-
-
     }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.searchTerm !== this.props.searchTerm) {
+            if (!this.props.searchTerm) {
+                notesService.query().then((notes) => {
+                    this.setState({notes})
+                    return
+                })
+            }
+            const regex = new RegExp(this.props.searchTerm, 'ig')
+            const filteredNotes = this.state.notes.filter((note) => {
+                if (note.info.title) {
+                    const matchTitle = !!note.info.title.match(regex)
+                    if (matchTitle) return matchTitle
+                }
+                if (note.info.txt) {
+                    return !!note.info.txt.match(regex)
+                } 
+                if (note.type === 'note-todos') {
+                    return note.info.todos.reduce((acc, todo) => {
+                        if (!!todo.txt.match(regex)) acc = true
+                        return acc
+                    }, false)
+                }
+            });
+            this.setState({notes: filteredNotes})
+        }
+    }
+
     onToggleTodo = () => {
         this.loadNotes()
     }

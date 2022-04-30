@@ -195,7 +195,6 @@ export class NotesDetails extends React.Component {
             <img src="" className="my-img" ref={this.imgRef} />
             <input
               className="input-submit-title"
-              style={{ backgroundColor: this.state.note.backgroundColor }}
               autoComplete="off"
               type="text"
               placeholder="Title..."
@@ -204,7 +203,6 @@ export class NotesDetails extends React.Component {
               value={title}
             />
             <input
-              style={{ backgroundColor: this.state.note.backgroundColor }}
               autoComplete="off"
               className="input-submit-txt "
               type="text"
@@ -216,20 +214,18 @@ export class NotesDetails extends React.Component {
             <section className="actions-container">
               <button
                 onClick={this.onSetNoteType}
-                style={{ backgroundColor: this.state.note.backgroundColor }}
+                
                 type="button"
               >
                 <i
                   ref={this.myRefTxt}
                   id="note-txt"
-                  style={{ backgroundColor: this.state.note.backgroundColor }}
                   className="fa-solid fa-a selected-format"
                 ></i>
               </button>
               <button
                 id="file-btn"
                 type="button"
-                style={{ backgroundColor: this.state.note.backgroundColor }}
               >
                 {" "}
                 <input
@@ -237,7 +233,6 @@ export class NotesDetails extends React.Component {
                   className="file-input btn"
                   name="image"
                   onChange={this.onImgInput}
-                  style={{ backgroundColor: this.state.note.backgroundColor }}
                 />
                 <i
                   ref={this.myRefImg}
@@ -246,12 +241,10 @@ export class NotesDetails extends React.Component {
                 ></i>
               </button>
               <button
-                style={{ backgroundColor: this.state.note.backgroundColor }}
                 onClick={this.onSetNoteType}
                 type="button"
               >
                 <i
-                  style={{ backgroundColor: this.state.note.backgroundColor }}
                   ref={this.myRefVideo}
                   id="note-video"
                   className="fa-brands fa-youtube"
@@ -259,7 +252,6 @@ export class NotesDetails extends React.Component {
               </button>
               <button
                 onClick={this.onSetNoteType}
-                style={{ backgroundColor: this.state.note.backgroundColor }}
                 className="last-action-btn"
                 type="button"
               >
@@ -267,11 +259,9 @@ export class NotesDetails extends React.Component {
                   ref={this.myRefTodos}
                   id="note-todos"
                   className="fa-solid fa-list-ul"
-                  style={{ backgroundColor: this.state.note.backgroundColor }}
                 ></i>
               </button>
               <button
-                style={{ backgroundColor: this.state.note.backgroundColor }}
                 type="button"
                 className="input-color-btn"
                 onClick={this.toggleColorInput}
@@ -281,7 +271,6 @@ export class NotesDetails extends React.Component {
                   isShown={this.state.isColorInputShown}
                 />
                 <i
-                  style={{ backgroundColor: this.state.note.backgroundColor }}
                   className="fa-solid fa-palette"
                 ></i>
               </button>

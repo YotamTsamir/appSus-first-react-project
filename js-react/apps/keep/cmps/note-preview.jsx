@@ -71,13 +71,13 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onToggl
     return (
       <div onClick={selectNote} className="note" key={note.id} style={{ backgroundColor: note.backgroundColor }}>
         <img className="note-preview-img" src={note.info.url} alt="" />
+        <div className="note-title">{note.info.title}</div>
+        <div className="note-btn-container">
         <div className="thumbtack-btn-container">
           <button style={{ backgroundColor: note.backgroundColor }} onClick={onPinNotePreview}>
             <i className="fa-solid fa-thumbtack" style={{ backgroundColor: note.backgroundColor }}></i>
           </button>
         </div>
-        <div className="note-title">{note.info.title}</div>
-        <div className="note-btn-container">
           <div
             style={{ backgroundColor: note.backgroundColor }}
             onClick={(ev) => {
@@ -105,6 +105,8 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onToggl
         style={{ backgroundColor: note.backgroundColor }}
       >
         <iframe width="260" height="200" src={note.info.url}></iframe>
+        <div className="note-title">{note.info.title}</div>
+        <div className="note-btn-container">
         <div className="thumbtack-btn-container">
           <button style={{ backgroundColor: note.backgroundColor }} onClick={onPinNotePreview}>
             <i
@@ -113,8 +115,6 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onToggl
             ></i>
           </button>
         </div>
-        <div className="note-title">{note.info.title}</div>
-        <div className="note-btn-container">
           <div
             style={{ backgroundColor: note.backgroundColor }}
             onClick={(ev) => {
@@ -151,12 +151,12 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onToggl
           );
         })}
         </ul>
+        <div className="note-btn-container" style={{ backgroundColor: note.backgroundColor }}>
         <div className="thumbtack-btn-container">
           <button style={{ backgroundColor: note.backgroundColor }} onClick={onPinNotePreview}>
             <i className="fa-solid fa-thumbtack" style={{ backgroundColor: note.backgroundColor }}></i>
           </button>
         </div>
-        <div className="note-btn-container" style={{ backgroundColor: note.backgroundColor }}>
           <div
             className="send-email-btn-container"
             style={{ backgroundColor: note.backgroundColor }}
