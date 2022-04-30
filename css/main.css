@@ -2,6 +2,7 @@
 @import './parts/base.css';
 @import './parts/helpers.css';
 @import './parts/fonts.css';
+@import '/parts/home.css';
 
 
 
@@ -31,3 +32,6 @@
 @import './books/cmps/simple-counter.css';
 @import './books/cmps/user-popup.css';
 @import './books/cmps/user-preview.css';
+
+
+
