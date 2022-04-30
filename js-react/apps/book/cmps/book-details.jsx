@@ -66,8 +66,8 @@ export class BookDetails extends React.Component {
                 <p>{(2022 - book.publishDate > 10) ? 'Veteran book' :
                     (2022 - book.publishedDate < 1) ? 'New' : ''}</p>
                 <h1>{(book.listPrice.isOnSale) ? 'This book is now on sale!' : ''}</h1>
-                <Link to={`/home/${prevBookId}`}><button>Previus book</button></Link>
-                <Link to={`/home/${nextBookId}`}><button>Next book</button></Link>
+                <Link to={`/books/${prevBookId}`}><button>Previus book</button></Link>
+                <Link to={`/books/${nextBookId}`}><button>Next book</button></Link>
                 <ReviewList reviews={book.reviews} bookId={book.id} onRemove={this.onRemoveReview} />
                 <ReviewAdd onSaveReview={this.onSaveReview} />
                
