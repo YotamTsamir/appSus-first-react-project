@@ -34,12 +34,12 @@ class _AppHeader extends React.Component{
         return <header>
         <h3 className="logo">Appsus</h3>
 
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} className={`search-header-form ${!this.state.app ? 'hidden' : ''}`}>
             <input className="search-header" placeholder="Search..." type="text" value={searchInputValue} onInput={this.handleChange} />
         </form>
 
         <nav className="links-header">
-            <NavLink to='#'>Home</NavLink>
+            <NavLink to='/'>Home</NavLink>
             <NavLink to='/maill'>Mail</NavLink>
             <NavLink to='/notes/:mailDetails'>Notes</NavLink>
             <NavLink to='/books'>Books</NavLink>
