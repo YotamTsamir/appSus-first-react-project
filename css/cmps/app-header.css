@@ -14,9 +14,10 @@ a{
     margin-left: 15px;
 }
 .search-header{
+    padding: 5px;
     width: 20rem;
     max-width: 20rem;
-    border-radius: 3px;
+    border-radius: 6px;
     border: none;
     outline: none;
     background-color: rgb(255, 251, 251);
