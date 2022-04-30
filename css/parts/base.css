@@ -7,5 +7,6 @@ body{
     margin-left: 20px;
 }
 .links-header{
-    margin-right: 20px;
+  margin-right: 15px;
+  font-style: italic;
 }

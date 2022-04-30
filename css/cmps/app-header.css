@@ -11,13 +11,14 @@ header nav>*:not(:last-child) {
 a{
     text-decoration: none;
     color: #212121;
+    margin-left: 15px;
 }
-.search{
+.search-header{
     width: 20rem;
     max-width: 20rem;
     border-radius: 3px;
     border: none;
     outline: none;
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(255, 251, 251);
     /* left: 0; */
 }

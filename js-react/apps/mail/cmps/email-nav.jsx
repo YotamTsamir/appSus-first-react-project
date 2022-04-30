@@ -55,7 +55,7 @@ export class EmailNav extends React.Component {
                 </div>
             </div>
             <div className={`header-nav flex ${this.props.critiria === 'draft' ? 'highlight-less' : ''}`} onClick={() => this.props.changeStateCritiria('draft')}>
-                <i className="fa-brands fa-firstdraft fa-nav"></i>
+            <i className="fa-solid fa-arrows-spin fa-nav"></i>
                 <div className="nav-txt">
                     <p className="nav-head">Draft</p>
                 </div>
