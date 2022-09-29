@@ -246,11 +246,6 @@ function deleteEmail(emailId) {
 function addSentMail(to, subject, body) {
     let mails = gEmails;
     let id;
-    // if (mails[mails.length - 1].isDraft) {
-    //     id = mails[mails.length - 1].id
-    //     mails[mails.length - 1].isDraft = false
-    //     return
-    // }
     mails.push({
         id: utilService.makeId(),
         subject, body, isRead: true, sentAt: Date.now(), from: loggedinUser.email, sentFrom: loggedinUser.fullname, to, isChecked: false,
@@ -258,8 +253,8 @@ function addSentMail(to, subject, body) {
     })
 }
 
-function sendLastMail(){
-    gEmails[gEmails.length-1].isDraft = false
+function sendLastMail() {
+    gEmails[gEmails.length - 1].isDraft = false
 }
 
 function editDraftEmail(toWho, subjectOfText, bodyOfMail) {
@@ -270,7 +265,7 @@ function editDraftEmail(toWho, subjectOfText, bodyOfMail) {
     mails[mails.length - 1].isDraft = true
 }
 
-function query(critiria,isSearch) {
+function query(critiria, isSearch) {
     let emails = gEmails
     let inboxMails = emails.filter(mail => mail.to === loggedinUser.email && !mail.isTrash)
     let sentMails = emails.filter(mail => mail.from === loggedinUser.email && !mail.isDraft && !mail.isTrash)
@@ -278,12 +273,12 @@ function query(critiria,isSearch) {
     let isDraft = emails.filter(mail => mail.isDraft === true && !mail.isTrash)
     let isTrash = emails.filter(mail => mail.isTrash === true)
     let searchedEmails = emails.filter(mail => {
-        if(mail.body.includes(critiria) || mail.subject.includes(critiria)){
-      return mail      
-        } 
-})
-    // if(!critiria) critiria = 'inbox'
-    if(isSearch) {
+        if (mail.body.includes(critiria) || mail.subject.includes(critiria)) {
+            return mail
+        }
+    })
+
+    if (isSearch) {
         return Promise.resolve(searchedEmails)
     }
     if (critiria === 'inbox') return Promise.resolve(inboxMails)

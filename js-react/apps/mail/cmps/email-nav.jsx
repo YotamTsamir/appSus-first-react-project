@@ -1,7 +1,6 @@
 
 export class EmailNav extends React.Component {
     state = {
-        // highligh:this.props.critiria,
         inbox: '',
         sent: ''
     }

@@ -33,7 +33,6 @@ export class NewMail extends React.Component {
     componentWillUnmount() {
         clearInterval(this.state.interval)
         this.setState({ interval: '' , body: ''})
-        // clearInterval(interval)
     }
 
 

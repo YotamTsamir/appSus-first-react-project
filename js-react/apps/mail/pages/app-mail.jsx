@@ -52,25 +52,7 @@ componentDidUpdate(prevProps){
     console.log(this.props.searchTerm)
     return
 }
-        // const filteredMales = this.state.notes.filter((note) => {
-        //     if (note.info.title) {
-                // const matchTitle = 
-                // !!note.info.title.match(regex)
-                // console.log(matchTitle)
-        //         if (matchTitle) return matchTitle
-        //     }
-        //     if (note.info.txt) {
-        //         return !!note.info.txt.match(regex)
-        //     } 
-        //     if (note.type === 'note-todos') {
-        //         return note.info.todos.reduce((acc, todo) => {
-        //             if (!!todo.txt.match(regex)) acc = true
-        //             return acc
-        //         }, false)
-        //     }
-        // });
-        // this.setState({notes: filteredNotes})
-    // }
+
 }
     
     getEmails = () => {
@@ -94,7 +76,7 @@ componentDidUpdate(prevProps){
     onCloseMail = (prevState) => {
         document.body.style.pointerEvents = 'all'
         this.setState(...prevState, { isOpenMail: false, noteMail: '' }, this.getEmails)
-        // this.setState({isOpenMail:false},this.getEmails)
+    
 
     }
 
@@ -130,18 +112,12 @@ componentDidUpdate(prevProps){
         if (email.isRead) email.isRead = false
         else email.isRead = true
         this.getEmails()
-        // this.setState({ isOpenMail: true })
+    
     }
 
     onClickMail = (email) => {
-        // if (email.isDraft) {
-        // console.log('here')
-        // this.onNewEmail()
-        // }
-        // else {
         email.isRead = true
         this.setState({ isOpenMail: true, currOpenMail: email })
-        // }
     }
 
     render() {
